@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PaymentPage {
     public WebDriver driver;
@@ -30,9 +32,11 @@ public class PaymentPage {
         WebElement element=driver.findElement(payNueva);
         action.doubleClick(element).click().build().perform();
         */
-// This radio button click dosen't work sometimes but when rerun it works.
+// This radio button click dosen't click always
+        WebDriverWait wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.elementToBeClickable(payNueva)).click();
         operations.clickable(driver,payNueva);
-        operations.clickable(driver,payNueva);
+        //operations.clickable(driver,payNueva);
     }
     public void enterCardNumber(String cardNumber ){
         operations.sendInformation(driver,cardNum,cardNumber);
