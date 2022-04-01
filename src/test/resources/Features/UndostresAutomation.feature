@@ -1,6 +1,5 @@
 Feature: Undostress recharge successful
 
-
   Scenario Outline: Select the Operator
     Given I launch "<browser>"
     When I open "<url>"
@@ -17,7 +16,7 @@ Feature: Undostress recharge successful
     Then Click on Pagar con Tarjeta
     And Enter the "<useremail>" and "<password>"
     Then Verify if user gets success message and recharge is successful
-   # And Close the browser
+    And Close the browser
     Examples:
       | browser | url |  mobileNumber | cardNumber|month|date|cvv|email|useremail|password|
      |chrome   |http://sanbox.undostres.com.mx |8465433546   |4111111111111111|11|25|111|test@test.com|automationUDT1@gmail.com|automationUDT123|

@@ -18,24 +18,22 @@ public class UserDetailsPage {
     By pwd = By.xpath("//*[@id='psw']");
     //By robotCapture = By.xpath("//span[@id='recaptcha-anchor']/div");
      By robotCapture = By.cssSelector(".recaptcha-checkbox-border");
-    //
-    By loginButton = By.xpath("//*[@id='loginBtn']");
+     By loginButton = By.xpath("//*[@id='loginBtn']");
 
     public void enterDetailsInPayment(String useremail,String password) throws InterruptedException {
         operations.sendInformation(driver,userEmail,useremail);
         operations.sendInformation(driver,pwd,password);
-       /* driver.switchTo().frame(6);
+       // driver.switchTo().frame(6);
         WebDriverWait wait = new WebDriverWait(driver, 50);
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(
                 By.xpath("//iframe[starts-with(@name, 'a-') and starts-with(@src, 'https://www.google.com/recaptcha')]")));
 
         wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//div[@class='recaptcha-checkbox-border']"))).click();
-       */ //operations.clickable(driver,robotCapture);
+        //operations.clickable(driver,robotCapture);
         //operations.csslocatorClick(driver,robotCapture);
-        Thread.sleep(3000);
-        driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-     //  operations.clickable(driver,loginButton);
+        driver.switchTo ().parentFrame ();
+        operations.clickable(driver,loginButton);
 
     }
 }

@@ -2,6 +2,8 @@ package pageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 public class PaymentPage {
     public WebDriver driver;
@@ -9,7 +11,8 @@ public class PaymentPage {
         this.driver=driver;
     }
     Operations operations = new Operations();
-By payTarjeta = By.xpath("//*[@id='new-card-toggle']/div/p[contains(text(),'Tarjeta')]");
+
+    By payTarjeta = By.xpath("//*[@id='new-card-toggle']/div/p[contains(text(),'Tarjeta')]");
     By payNueva = By.xpath("//*[contains(text(),'Usar nueva tarjeta')]");
     By cardNum = By.xpath("//*[@data-qa='numero-de-tarjeta-input']");
     By expMonth = By.xpath("//*[@data-qa='mes-input']");
@@ -23,25 +26,29 @@ By payTarjeta = By.xpath("//*[@id='new-card-toggle']/div/p[contains(text(),'Tarj
 
     }
     public void selectPaymentOption(){
+        /*Actions action = new Actions(driver);
+        WebElement element=driver.findElement(payNueva);
+        action.doubleClick(element).click().build().perform();
+        */
+// This radio button click dosen't work sometimes but when rerun it works.
         operations.clickable(driver,payNueva);
-
-         operations.clickable(driver,payNueva);
+        operations.clickable(driver,payNueva);
     }
     public void enterCardNumber(String cardNumber ){
         operations.sendInformation(driver,cardNum,cardNumber);
 
     }
-public void enterCardDetails(String month,String date,String cvvnum){
+    public void enterCardDetails(String month,String date,String cvvnum){
     operations.sendInformation(driver,expMonth,month);
     operations.sendInformation(driver,expDate,date);
     operations.sendInformation(driver,cvv,cvvnum);
 
 }
-public void enterEmail(String email){
+    public void enterEmail(String email){
     operations.sendInformation(driver,emailID,email);
 }
 
-public void submitPayButton(){
+    public void submitPayButton(){
         operations.clickable(driver,payButton);
 }
 
