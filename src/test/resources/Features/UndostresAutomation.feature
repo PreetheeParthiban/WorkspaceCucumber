@@ -1,5 +1,5 @@
 Feature: Undostress recharge successful
-
+@E2E
   Scenario Outline: Select the Operator
     Given I launch "<browser>"
     When I open "<url>"

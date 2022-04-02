@@ -39,6 +39,7 @@ public class PaymentPage {
         //operations.clickable(driver,payNueva);
     }
     public void enterCardNumber(String cardNumber ){
+
         operations.sendInformation(driver,cardNum,cardNumber);
 
     }
